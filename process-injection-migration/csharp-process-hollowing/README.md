@@ -3,6 +3,7 @@
 ## 🔗 Quick Links
 - [Process Hollowing Theory](#process-hollowing-theory)
 - [Process Hollowing with CSharp](#process-hollowing-with-csharp)
+- [Final Workflow Code (Complete Example)](#-final-workflow-code-complete-example)
 
 
 
