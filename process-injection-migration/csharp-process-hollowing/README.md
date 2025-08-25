@@ -344,7 +344,8 @@ ReadProcessMemory(hProcess, svchostBase, data, data.Length, out nRead);
 
 - Locate **EntryPoint RVA**:
     
-    ![image.png](attachment:732de6cd-c6da-4477-80a3-cbfd9a94b291:image.png)
+    <img width="801" height="314" alt="image" src="https://github.com/user-attachments/assets/ed0e43fe-791a-4fae-a406-8e9c58d9497a" />
+
     
     ```csharp
     uint e_lfanew_offset = BitConverter.ToUInt32(data, 0x3C);
