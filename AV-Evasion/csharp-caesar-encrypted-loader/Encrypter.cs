@@ -19,7 +19,7 @@ namespace Encrypter
                 return;
             }
 
-            // 🔹 Option 1: Read from file if argument is a file
+            // Option 1: Read from file if argument is a file
             if (File.Exists(args[0]))
             {
                 string fileContent = File.ReadAllText(args[0]).Trim();
@@ -27,18 +27,18 @@ namespace Encrypter
             }
             else
             {
-                // 🔹 Option 2: Treat argument as inline shellcode string
+                // Option 2: Treat argument as inline shellcode string
                 buf = ParseShellcode(args[0]);
             }
 
-            // 🔹 Encrypt shellcode
+            // Encrypt shellcode
             byte[] encoded = new byte[buf.Length];
             for (int i = 0; i < buf.Length; i++)
             {
                 encoded[i] = (byte)(((uint)buf[i] + 2) & 0xFF);
             }
 
-            // 🔹 Print in msfvenom-style format (no trailing comma at the end)
+            // Print in msfvenom-style format (no trailing comma at the end)
             StringBuilder hex = new StringBuilder(encoded.Length * 2);
             for (int i = 0; i < encoded.Length; i++)
             {
