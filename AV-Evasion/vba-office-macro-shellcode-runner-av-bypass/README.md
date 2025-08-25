@@ -1,8 +1,8 @@
 # TOC
 
-+ [bypassing-antivirus-in-vba](https://github.com/B4l3rI0n/OSEP/new/main/AV-Evasion#bypassing-antivirus-in-vba)
-+ [full-code](https://github.com/B4l3rI0n/OSEP/new/main/AV-Evasion#full-code)
-+ [vba-stomping--microsoft-word-macro-evasion](https://github.com/B4l3rI0n/OSEP/new/main/AV-Evasion#vba-stomping--microsoft-word-macro-evasion)
++ [bypassing-antivirus-in-vba](#bypassing-antivirus-in-vba)
++ [full-code](#full-code)
++ [vba-stomping--microsoft-word-macro-evasion](#vba-stomping--microsoft-word-macro-evasion)
 
 
 # **Bypassing Antivirus in VBA**
