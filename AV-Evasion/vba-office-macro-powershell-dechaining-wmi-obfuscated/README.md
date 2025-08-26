@@ -268,8 +268,9 @@ End Sub
     }
     $output | clip
     ```
+3. Make sure word file name is `runner.doc` 
     
-3. **VBA code**
+4. **VBA code**
     
     The VBA macros are broken into small functions to avoid static signature detection.
     
