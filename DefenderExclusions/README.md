@@ -5,10 +5,9 @@ This repository provides several PowerShell techniques for enumerating Microsoft
 **Notes**
 + **Non-OSEP Content.**
 + **Reference:** [Peeking Behind the Curtain: Finding Defender’s Exclusions](https://blog.fndsec.net/2024/10/04/uncovering-exclusion-paths-in-microsoft-defender-a-security-research-insight/)
++ **Example: Excluded Path for Testing**
   
-**Excluded Path for testing**
-
-<img width="1077" height="478" alt="image" src="https://github.com/user-attachments/assets/6537840c-2934-4a9f-8e31-cd6fb9148bee" />
+  <img width="1077" height="478" alt="image" src="https://github.com/user-attachments/assets/6537840c-2934-4a9f-8e31-cd6fb9148bee" />
 
 ---
 
